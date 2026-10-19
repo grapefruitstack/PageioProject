@@ -11,19 +11,8 @@ body {
         position: absolute;
         top: 0px;
         left: 0px;
-        background-color: black;
+        background-color: rgb(255, 255, 255);
         }
-
-@media (min-width: 480px) {
-    .card-container {
-        flex-direction: row;
-    }
-}
-
-body {
-margin: 0;
-overflow: hidden;
-    }
 
 canvas {
     position: absolute;
@@ -31,3 +20,30 @@ canvas {
     left: 0;
     z-index: 1;
     }
+
+.solid {
+    position: relative;
+    z-index: 2;
+    margin-top: 300px;
+}
+
+.platform {
+    position: absolute;
+    width: 200px;
+    height: 50px;
+    box-sizing: border-box;
+    z-index: 3;
+    pointer-events: none;
+}
+
+body {
+margin: 0;
+overflow: hidden;
+    }
+
+
+@media (min-width: 480px) {
+    .card-container {
+        flex-direction: row;
+    }
+}
