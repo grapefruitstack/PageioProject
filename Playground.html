@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Website Playground</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<!-- <div id="overlay"></div> -->
+
+<body>
+
+    <header>
+        <h1>Website Playground</h1>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#game">Game</a>
+        <a href="controls"Controls</a>
+        <a href="#about">About</a>
+    </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h2>Welcome to the Website Playground</h2>
+            <p>
+                This is a simple website playground where you can navigate the site by your avatar!
+            </p>
+        </section>
+
+         <section id="game">
+            <h2>Play the Game</h2>
+
+            <div id="game-container">
+                <div class="platform" style="width: 250px; height: 60px;">
+                    <p>This is a platform! Don't fall off!</p>
+                </div>
+
+
+                <canvas id="game-canvas"></canvas>
+            </div>
+        </section>
+
+        <section id="controls">
+            <h2>How to Play</h2>
+            <p>Keyboard: A / D: Move left and right. Space: Jump</p>
+            <p>Mouse or touch: Tap left, right, or top of screen to move. </p>
+        </section>
+
+        <section id="about">
+            <h2>About This Project</h2>
+            <p>
+                This website is a small platforming project prototype. When finished, you'll be able to use your phone or tablet or laptop to traverse this site freely!
+            </p>
+        </section>
+    </main>
+
+    </main>
+
+    
+    
+    
+    
+    
+    
+    <!-- IMPORTANT STUFF DOWN HERE -->
+    <canvas id = "game-canvas"></canvas>
+    
+    <!-- <script src = "script/overlay.js"></script> -->
+    <script src = "script/gameobjects.js"></script>
+    <script src = "script/movement.js"></script>
+    <script src = "script/Player.js"></script>
+    <script src = "script/main.js"></script>
+
+</body>
+</html>

@@ -7,33 +7,29 @@ body {
         font-size: 4em;
         position:absolute;
     } */
+
 #game-canvas {
         position: absolute;
         top: 0px;
         left: 0px;
-        background-color: rgb(255, 255, 255);
-        }
-
-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    }
-
-.solid {
-    position: relative;
-    z-index: 2;
-    margin-top: 300px;
-}
+        background-color: transparent;
+        z-index: 3;
 
 .platform {
-    position: absolute;
-    width: 200px;
-    height: 50px;
-    box-sizing: border-box;
-    z-index: 3;
-    pointer-events: none;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+
+    width: fit-content;
+    max-width: 80%;
+
+    position: relative;
+    
+    background-color: transparent;
+    z-index: 2;
+
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 body {
@@ -43,7 +39,7 @@ overflow: hidden;
 
 
 @media (min-width: 480px) {
-    .card-container {
-        flex-direction: row;
+    .platform {
+        padding: 15px;
     }
 }
