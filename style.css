@@ -8,6 +8,22 @@ body {
         position:absolute;
     } */
 
+:root {
+    --pcolor: #171515;
+    --h1color: #1a1a1a;
+    --pfontsize: 18px;
+}
+
+h1{
+    font-size: 24px;
+    color: var(--h1color);
+}
+
+p{
+    font-size: var(--pfontsize);
+    color: var(--pcolor);
+}
+
 #game-canvas {
         position: absolute;
         top: 0px;
