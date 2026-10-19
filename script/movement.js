@@ -1,6 +1,6 @@
 
     window.addEventListener('keypress',(event)=>{
-        switch (event.key.toLowerCase()){
+        switch (event.key){
             //empty space below denotes the spacebar
             case ' ':
                 if(player.vel.y===0)
@@ -17,7 +17,7 @@
         }
     })
     window.addEventListener('keyup',(event)=>{
-        switch (event.key.toLowerCase()){
+        switch (event.key){
             case 'a':
                 keys.a.pressed = false;
                 break;
@@ -26,31 +26,4 @@
                 break;
             }
         })
-
-    window.addEventListener('mousedown',(event)=>{
-        isMouseDown = true;
-        new MouseEvent(event);
-        mousePosX = event.clientX
-        mousePosY = event.clientY;
-        console.log('mousedown');
-        if( mousePosX <300){            
-                movingLeft = true;}
-        else if( mousePosX >=1200){
-            movingRight = true;
-        }
-        if(mousePosY<= 100&& player.vel.y===0){
-                {player.vel.y = -jumpForce;}
-
-        }
-        console.log(mousePosX+", "+mousePosY);
-
-        
-    })
-    window.addEventListener('mouseup',()=>{
-        isMouseDown = false;
-        movingLeft = false;
-        movingRight = false
-    })
-    window.addEventListener('mouseup',()=>{
-    })
 
