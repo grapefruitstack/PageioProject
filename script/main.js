@@ -1,26 +1,16 @@
-    const canvas = document.querySelector('canvas');
-    const c = canvas.getContext('2d');
 
-    function draw() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
+const canvas = document.querySelector('#game-canvas');
+const c = canvas.getContext('2d');
 
-    draw();
-    window.addEventListener('resize', draw);
+let jumpForce = 20;
+let moveSpeed = 5;
+let movingRight = false;
+let movingLeft = false;
+let isMouseDown = false;
 
-    //const height = 100
-    let jumpForce = 20;
-    let moveSpeed = 5;
-    const downAttack = 10;
-    var movingRight = false;
-    var movingLeft = false;
-    var isMouseDown = false;
-    
-    var mousePosX = document.getElementById("x");
-    var mousePosY = document.getElementById("y");
-    const player = new Player()
-    const keys = {
+const player = new Player();
+
+const keys = {
         a:{
             pressed:false
         },
@@ -33,41 +23,31 @@
         downAttack:{
             pressed:false
         }
+    };
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+function animation() {
+    requestAnimationFrame(animation);
+
+    c.clearRect(0, 0, canvas.width, canvas.height);
+
+    if (keys.a.pressed || movingLeft) {
+        player.vel.x = -moveSpeed;
+    } else if (keys.d.pressed || movingRight) {
+        player.vel.x = moveSpeed;
+    } else {
+        player.vel.x = 0;
     }
-    function animation(){
-        window.requestAnimationFrame(animation)
-        c.fillStyle = 'white'
-        c.fillRect(0,0,canvas.width,canvas.height)
-        if(keys.a.pressed||movingLeft){
-            player.vel.x = -moveSpeed
-        }
-        else if(keys.d.pressed||movingRight){
-            player.vel.x = moveSpeed
-        }
-        else{
-            player.vel.x = 0
-        }
 
+    player.draw();
+    player.update();
+}
 
-        player.draw()
-        player.update()
-    }
-    animation()
-
-    const platforms = [
-    { x: 200, y: 500, width: 150, height: 20 },
-    { x: 400, y: 350, width: 150, height: 20 },
-    { x: 600, y: 200, width: 150, height: 20 }
-];
-
-platforms.forEach(platform => {
-    c.fillStyle = 'green';
-
-    c.fillRect(
-        platform.x,
-        platform.y,
-        platform.width,
-        platform.height
-    );
-});
-
+animation();
