@@ -19,8 +19,6 @@
     
     var mousePosX = document.getElementById("x");
     var mousePosY = document.getElementById("y");
-
-    const pageWidth = document.documentElement.scrollWidth;
     const player = new Player()
     const keys = {
         a:{

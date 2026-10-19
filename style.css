@@ -1,0 +1,33 @@
+body {
+     overflow: hidden;
+    }
+    /* h2{
+        color: black;
+        z-index: 2;
+        font-size: 4em;
+        position:absolute;
+    } */
+#game-canvas {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        background-color: black;
+        }
+
+@media (min-width: 480px) {
+    .card-container {
+        flex-direction: row;
+    }
+}
+
+body {
+margin: 0;
+overflow: hidden;
+    }
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    }

@@ -33,12 +33,9 @@
         mousePosX = event.clientX
         mousePosY = event.clientY;
         console.log('mousedown');
-
-        const ratioOfPageX = mousePosX/ pageWidth;
-
-        if( ratioOfPageX <.3){            
+        if( mousePosX <300){            
                 movingLeft = true;}
-        else if( ratioOfPageX >=.7){
+        else if( mousePosX >=1200){
             movingRight = true;
         }
         if(mousePosY<= 100&& player.vel.y===0){
