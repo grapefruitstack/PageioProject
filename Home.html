@@ -3,9 +3,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Website Playground</title>
+    <title>Home</title>
     <link rel="stylesheet" href="style.css">
 
 </head>
@@ -13,29 +13,19 @@
 
 <body>
 
-    <header>
-        <h1>Website Playground</h1>
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#game">Game</a>
-        <a href="controls">Controls</a>
-        <a href="#about">About</a>
-    </nav>
-    </header>
-
     <main>
         <section id="home">
-            <h2>Welcome to the Website Playground</h2>
+            <h2>Welcome to the Storybook Playground</h2>
             <p>
-                This is a simple website playground where you can navigate the site by your avatar!
+                This is a simple storybook platforming project. You can explore stories like Alice in Wonderland by moving your avatar through the story's platforms.
             </p>
         </section>
 
-         <section id="game">
+         <section id="gametest">
             <h2>Play the Game</h2>
 
             <div id="game-container">
-                <div class="platform" style="width: 250px; height: 60px;">
+                <div class="platform">
                     <p>This is a platform! Don't fall off!</p>
                 </div>
                 <canvas id="game-canvas"></canvas>
@@ -45,15 +35,24 @@
         <section id="controls">
             <h2>How to Play</h2>
             <p>Keyboard: A / D: Move left and right. Space: Jump</p>
-            <p>Mouse or touch: Tap left, right, or top of screen to move. </p>
+            <p>Mouse or touch: Tap left, right, or top of screen to move.</p>
+            <p>Click: Move through links</p>
+            <p>Backspace / Back: Return to previous page</p>
         </section>
 
         <section id="about">
             <h2>About This Project</h2>
             <p>
-                This website is a small platforming project prototype. When finished, you'll be able to use your phone or tablet or laptop to traverse this site freely!
+                This website is a small platforming project prototype. 
+                When complete, you'll be able to use your avatar to explore a variety of stories.
+                Currently, only Chapter One of our version of Alice in Wonderland is ready to explore. 
             </p>
         </section>
+
+        <section id="gamelist">
+            <a href="AliceInWonderland.html"><strong>Alice In Wonderland</strong></a>
+        <p><br></p>
+    </section>
     </main>
 
 
@@ -66,9 +65,11 @@
     <!-- IMPORTANT STUFF DOWN HERE -->
     
     <!-- <script src = "script/overlay.js"></script> -->
+    <canvas id = "game-canvas"></canvas>
     <script src = "script/gameobjects.js"></script>
     <script src = "script/movement.js"></script>
-    <script src = "script/Player.js"></script>
+    <script src = "script/player.js"></script>
+    <script src = "script/camera.js"></script>
     <script src = "script/main.js"></script>
 
 </body>

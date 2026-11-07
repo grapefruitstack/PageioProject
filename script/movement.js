@@ -1,10 +1,11 @@
 
-    window.addEventListener('keypress',(event)=>{
-        switch (event.key.toLowerCase()){
-            //empty space below denotes the spacebar
+    window.addEventListener('keydown', (event) => {
+        switch (event.key.toLowerCase()) {
             case ' ':
-                if(player.vel.y===0)
-                    {player.vel.y = -jumpForce;}
+                event.preventDefault();
+                if (player.onGround) {
+                    player.vel.y = -jumpForce;
+                }
                 break;
             case 'a':
                 keys.a.pressed = true;
@@ -12,20 +13,19 @@
             case 'd':
                 keys.d.pressed = true;
                 break;
-            case 's': //used for clicking on links
-                     break;
         }
-    })
-    window.addEventListener('keyup',(event)=>{
-        switch (event.key.toLowerCase()){
+    });
+
+    window.addEventListener('keyup', (event) => {
+        switch (event.key.toLowerCase()) {
             case 'a':
                 keys.a.pressed = false;
                 break;
             case 'd':
                 keys.d.pressed = false;
                 break;
-            }
-        })
+        }
+    });
 
 
     window.addEventListener('pointerdown', (event) => {
@@ -60,5 +60,3 @@
         movingLeft = false;
         movingRight = false;
     });
-
-

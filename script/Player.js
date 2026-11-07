@@ -1,6 +1,11 @@
-
 class Player {
     constructor() {
+        this.width = 50;
+        this.height = 50;
+
+        const platforms = GameObjects.getPlatforms(canvas);
+        const startingPlatform = platforms[platforms.length - 1];
+
         this.vel = {
             x: 0,
             y: 0,
@@ -8,12 +13,17 @@ class Player {
         };
 
         this.position = {
-            x: 100,
-            y: 100
+            x: startingPlatform
+                ? startingPlatform.x + (startingPlatform.width - this.width) / 2
+                : 100,
+            y: startingPlatform
+                ? startingPlatform.y - this.height
+                : Math.max(
+                    0,
+                    document.documentElement.scrollHeight - this.height - 100
+                )
         };
 
-        this.width = 100;
-        this.height = 100;
         this.onGround = false;
 
         this.bounds = {
@@ -25,9 +35,10 @@ class Player {
 
     draw() {
         c.fillStyle = 'red';
+
         c.fillRect(
-            this.position.x,
-            this.position.y,
+            this.position.x - window.scrollX,
+            this.position.y - window.scrollY,
             this.width,
             this.height
         );
@@ -36,11 +47,11 @@ class Player {
     update() {
         const previousBottom = this.position.y + this.height;
 
-        // PLAYER MOVEMENT
+        // Player movement
         this.position.x += this.vel.x;
         this.position.y += this.vel.y;
 
-        // KEEP PLAYER WITHIN BOUNDS OF CANVAS
+        // Keep player within horizontal bounds
         this.position.x = Math.max(
             0,
             Math.min(this.position.x, canvas.width - this.width)
@@ -52,7 +63,7 @@ class Player {
 
         this.onGround = false;
 
-        // GET HTML PLATFORMS.
+        // Get HTML platforms
         const platforms = GameObjects.getPlatforms(canvas);
 
         for (const platform of platforms) {
@@ -60,9 +71,10 @@ class Player {
                 this.bounds.rightOfScreen > platform.x &&
                 this.bounds.leftOfScreen < platform.x + platform.width;
 
+            const landingTolerance = 1;
             const crossedPlatformTop =
-                previousBottom <= platform.y &&
-                this.bounds.bottomOfScreen >= platform.y;
+                previousBottom <= platform.y + landingTolerance &&
+                this.bounds.bottomOfScreen >= platform.y - landingTolerance;
 
             if (
                 this.vel.y >= 0 &&
@@ -77,12 +89,14 @@ class Player {
             }
         }
 
-        // MAKE BOTTOM OF CANVAS A FLOOR
-        if (this.position.y + this.height >= canvas.height) {
-            this.position.y = canvas.height - this.height;
+        // Document bottom acts as the floor
+        const documentHeight = document.documentElement.scrollHeight;
+
+        if (this.position.y + this.height >= documentHeight) {
+            this.position.y = documentHeight - this.height;
             this.vel.y = 0;
             this.onGround = true;
-            this.bounds.bottomOfScreen = canvas.height;
+            this.bounds.bottomOfScreen = documentHeight;
         }
 
         if (!this.onGround) {
